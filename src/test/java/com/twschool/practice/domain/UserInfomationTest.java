@@ -23,4 +23,18 @@ public class UserInfomationTest {
         Assert.assertEquals(3, resultScore);
     }
 
+    //失败一次得-3分
+    @Test
+    public void should_return_negative_3_grade_when_failed_one_times() {
+        UserInformation userInformation = new UserInformation("luna", guessNumberGame, 0, 0);
+        guessNumberGame.guess("1 2 5 6");
+        guessNumberGame.guess("1 2 5 6");
+        guessNumberGame.guess("1 2 5 6");
+        guessNumberGame.guess("1 2 5 6");
+        guessNumberGame.guess("1 2 5 6");
+        guessNumberGame.guess("1 2 5 6");
+        int resultScore = userInformation.calculateUserScore();
+        Assert.assertEquals(-3, resultScore);
+    }
+
 }
