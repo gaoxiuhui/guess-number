@@ -51,4 +51,19 @@ public class UserInfomationTest {
         Assert.assertEquals(11, resultScore);
     }
 
+    //连赢五次额外加3分
+    @Test
+    public void should_return_20_grade_when_continuous_success_5_times() {
+        int resultScore=0;
+        UserInformation userInformation = new UserInformation("luna", guessNumberGame, 0, 0);
+        userInformation.initUserWinCount();
+        for(int playTimes=0;playTimes<5;playTimes++){
+            guessNumberGame.guess("1 2 3 4");
+            resultScore = userInformation.calculateUserScore();
+        }
+
+        Assert.assertEquals(20, resultScore);
+    }
+
+
 }
