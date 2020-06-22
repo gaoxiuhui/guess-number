@@ -37,4 +37,18 @@ public class UserInfomationTest {
         Assert.assertEquals(-3, resultScore);
     }
 
+    //连赢三次额外加2分
+    @Test
+    public void should_return_11_grade_when_continuous_success_3_times() {
+        int resultScore=0;
+        UserInformation userInformation = new UserInformation("luna", guessNumberGame, 0, 0);
+        userInformation.initUserWinCount();
+        for(int playTimes=0;playTimes<3;playTimes++){
+            guessNumberGame.guess("1 2 3 4");
+             resultScore = userInformation.calculateUserScore();
+        }
+
+        Assert.assertEquals(11, resultScore);
+    }
+
 }
