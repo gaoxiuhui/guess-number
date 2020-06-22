@@ -1,6 +1,8 @@
 package com.twschool.practice.service;
 
+import com.twschool.practice.domain.GameStatus;
 import com.twschool.practice.domain.GuessNumberGame;
+import com.twschool.practice.domain.UserInformation;
 import com.twschool.practice.repository.GameRepository;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 public class GameService {
 
     private GameRepository gameRepository;
+
 
     public GameService(GameRepository gameRepository) {
 
@@ -18,4 +21,6 @@ public class GameService {
         GuessNumberGame  guessNumberGame=gameRepository.find();
         return guessNumberGame.guess(userAnswerString);
     }
+
+
 }
